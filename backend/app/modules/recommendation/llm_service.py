@@ -3,7 +3,7 @@ from app.core.config import settings
 
 genai.configure(api_key=settings.GEMINI_API_KEY)
 
-MODEL_NAME = "gemini-1.5-flash"  # Gemini 2.5 Flash equivalente actual
+MODEL_NAME = "gemini-2.5-flash"  # Gemini 2.5 Flash equivalente actual
 
 
 def call_gemini(prompt: str):

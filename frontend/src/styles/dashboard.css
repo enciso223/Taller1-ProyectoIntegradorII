@@ -1,0 +1,117 @@
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f4f6f8;
+}
+
+.layout{
+  display:flex;
+}
+
+/* Zona Izquierda */
+
+.sidebar{
+  width:350px;
+  height:100vh;
+  background:#ffffff;
+  padding:20px;
+  position:fixed;
+}
+
+.logo{
+  margin-bottom:20px;
+}
+
+.search{
+  width:200px;
+  padding:8px;
+  margin-bottom:20px;
+}
+
+.menu-title{
+  font-size:12px;
+  color:gray;
+  margin-top:20px;
+}
+
+.sidebar ul{
+  list-style:none;
+  padding:0;
+}
+
+.sidebar li{
+  padding:10px;
+  cursor:pointer;
+  border-radius:6px;
+}
+
+.sidebar li:hover{
+  background:#e0e0e0;
+}
+
+.active{
+  width:200px;
+  background:#3b82f6;
+  color:white;
+}
+
+
+.content{
+  margin-left:260px;
+  padding:40px;
+  padding-left: 200px;
+  width:100%;
+}
+
+.welcome{
+  margin-bottom:30px;
+}
+
+.stats{
+  display:flex;
+  gap:20px;
+}
+
+.stat-card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  width:300px;
+  box-shadow:0 0 6px rgba(0,0,0,0.1);
+}
+
+
+
+.card-section{
+  margin-bottom:80px;
+}
+
+
+.chart-placeholder{
+  height:250px;
+  background:white;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+
+.card-box{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+}
+
+
+
+.upload-box{
+  height:150px;
+  border:2px dashed #bbb;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+}

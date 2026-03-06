@@ -73,3 +73,4 @@ def _fetch_recommendations(user_id):
     """Internal method to fetch from database."""
     # TODO: Implement database fetch
     pass
+

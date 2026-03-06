@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
-
 class RecommendationBase(BaseModel):
     """Base schema for expense recommendations"""
     category: str = Field(..., description="Expense category")

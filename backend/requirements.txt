@@ -1,11 +1,13 @@
+<<<<<<< HEAD
 fastapi
 uvicorn[standard]
 sqlalchemy
 psycopg2-binary
 python-dotenv
-pydantic
+pydantic>=1.10
 pandas
 openpyxl
 google-generativeai
 python-multipart
 pytest
+

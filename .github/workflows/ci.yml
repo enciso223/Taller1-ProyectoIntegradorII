@@ -2,9 +2,9 @@ name: Backend CI
 
 on:
   push:
-    branches: [ main, develop, Pruebas ]
+    branches: [ main, develop, Pruebas, feature/cicd]
   pull_request:
-    branches: [ main, develop, Pruebas ]
+    branches: [ main, develop, Pruebas, feature/cicd]
 
 jobs:
   build-and-test:

@@ -6,6 +6,7 @@ from app.modules.simulation.controller import router as simulation_router
 from app.modules.recommendation.controller import router as recommendation_router
 from app.modules.metrics.controller import router as metrics_router
 from app.models.metric import Metric
+from app.models.user import User
 
 app = FastAPI(title="Gestor Inteligente de Gastos")
 

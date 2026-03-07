@@ -1,12 +1,10 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
 from app.core.database import get_db
-from app.core.dependencies import get_current_user
 from app.modules.metrics.service import get_metrics
+from app.core.dependencies import get_current_user
 
 router = APIRouter(prefix="/api/metrics", tags=["Metrics"])
-
 
 @router.get("/")
 def metrics(

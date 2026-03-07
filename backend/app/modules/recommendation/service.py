@@ -32,6 +32,6 @@ def generate_recommendations(db: Session):
 
     # 6. Tokens
     tokens_used = response.usage_metadata.total_token_count
-    log_usage(tokens_used)
+    log_usage(db, tokens_used, operation="recommendation_generation")
 
     return RecommendationResponse(**validated)

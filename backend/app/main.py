@@ -3,7 +3,8 @@ from app.core.database import engine, Base
 from app.modules.ingestion.controller import router as ingestion_router
 from app.modules.analysis.controller import router as analysis_router
 from app.modules.simulation.controller import router as simulation_router
-
+from app.models.metric import Metric
+from app.models.user import User
 app = FastAPI(title="Gestor Inteligente de Gastos")
 
 Base.metadata.create_all(bind=engine)

@@ -9,7 +9,7 @@ from app.modules.ingestion.schemas import UploadResponse
 router = APIRouter(
     prefix="/api/ingestion",
     tags=["Ingestion"],
-    dependencies=[Depends(get_current_user)]  # ✅ exige token en todo ingestion
+    dependencies=[Depends(get_current_user)] 
 )
 
 @router.post("/upload", response_model=UploadResponse)
@@ -19,7 +19,7 @@ def upload_excel(file: UploadFile = File(...), db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Solo se permiten archivos .xlsx")
 
     try:
-        records = process_excel(file.file, db)  # ✅ sin replace
+        records = process_excel(file.file, db)  
         return UploadResponse(
             message="Archivo procesado correctamente",
             records_inserted=records

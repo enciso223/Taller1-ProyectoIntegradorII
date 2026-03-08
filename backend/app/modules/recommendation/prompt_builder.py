@@ -21,4 +21,7 @@ Reglas:
 - No inventes datos
 - No agregues texto fuera del JSON
 - No expliques nada fuera del JSON
+- Devuelve SOLO JSON válido.
+- No uses markdown.
+- No uses ```json.
 """

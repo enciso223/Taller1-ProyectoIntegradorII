@@ -15,7 +15,7 @@ def call_gemini(prompt: str):
         generation_config={
             "temperature": 0.3,
             "top_p": 0.8,
-            "max_output_tokens": 1000
+            "max_output_tokens": 10000
         }
     )
 

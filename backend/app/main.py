@@ -5,8 +5,17 @@ from app.modules.analysis.controller import router as analysis_router
 from app.modules.simulation.controller import router as simulation_router
 from app.modules.recommendation.controller import router as recommendation_router
 from app.modules.metrics.controller import router as metrics_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Gestor Inteligente de Gastos")
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 Base.metadata.create_all(bind=engine)
 

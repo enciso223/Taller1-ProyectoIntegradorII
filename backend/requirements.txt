@@ -10,3 +10,4 @@ google-generativeai
 python-multipart
 pytest
 python-jose[cryptography]
+passlib[bcrypt]

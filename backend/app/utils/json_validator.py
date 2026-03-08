@@ -1,7 +1,14 @@
 import json
-
+import re
 
 def validate_json_response(text: str):
+
+    # eliminar markdown
+    text = text.strip()
+
+    text = re.sub(r"^```json", "", text)
+    text = re.sub(r"^```", "", text)
+    text = re.sub(r"```$", "", text)
 
     try:
         data = json.loads(text)

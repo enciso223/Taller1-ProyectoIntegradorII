@@ -6,6 +6,7 @@ from app.utils.json_validator import validate_json_response
 from app.utils.financial_validator import validate_projected_savings
 from app.modules.metrics.service import log_usage
 from app.modules.recommendation.schemas import RecommendationResponse
+import time
 
 
 def generate_recommendations(db: Session):
@@ -20,18 +21,37 @@ def generate_recommendations(db: Session):
     prompt = build_prompt(summary_dict)
 
     # 3. LLM
-    response = call_gemini(prompt)
-
+    start_time = time.time() # Para medir el tiempo de respuesta
+    error = False
+    try:
+        response = call_gemini(prompt)
+    except Exception:
+        error = True
+        raise
+    end_time = time.time()
+    response_time = end_time - start_time
     text_output = response.text
 
     # 4. Validar JSON
     validated = validate_json_response(text_output)
+    hallucination_detected = False
+    validated_fixed = validate_projected_savings(validated, real_total)
+    if validated_fixed != validated:
+        hallucination_detected = True
+    validated = validated_fixed
 
     # 5. Mitigar alucinaciones numéricas
     validated = validate_projected_savings(validated, real_total)
 
     # 6. Tokens
     tokens_used = response.usage_metadata.total_token_count
-    log_usage(db, tokens_used, operation="recommendation_generation")
+    log_usage(
+    db,
+    tokens_used,
+    operation="recommendation_generation",
+    response_time=response_time,
+    error=error,
+    hallucination=hallucination_detected
+)
 
     return RecommendationResponse(**validated)

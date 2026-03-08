@@ -173,6 +173,13 @@ para el ciculo de carga
   gap:15px;
   min-height:120px;
 }
+.spinner-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:80px;
+}
 excel
 .preview-table {
   width: 100%;

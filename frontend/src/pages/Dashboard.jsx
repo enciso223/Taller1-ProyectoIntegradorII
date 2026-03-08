@@ -299,9 +299,11 @@ function Dashboard() {
           <div className="card-boxRecommenadation">
 
           {loadingLLM ? (
+            <div className="spinner-wrapper">
             <div className="spinner"></div>
+            </div>
           ) : (
-            <p>
+            <p style={{ whiteSpace: "pre-line" }}>
               {stats.recomendacion || "Aquí aparecerán recomendaciones generadas por IA"}
             </p>
           )}

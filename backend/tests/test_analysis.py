@@ -26,7 +26,6 @@ def test_calculate_summary_mocked():
     # Cada llamada a query devuelve un mock diferente
     mock_db.query.side_effect = [mock_total, mock_category, mock_monthly]
 
-    # Llamamos a la función
     result: AnalysisResponse = calculate_summary(mock_db)
 
     # Verificaciones

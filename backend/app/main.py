@@ -7,6 +7,7 @@ from app.modules.recommendation.controller import router as recommendation_route
 from app.modules.metrics.controller import router as metrics_router
 from app.models.metric import Metric
 from app.models.user import User
+from app.modules.auth.controller import router as auth_router
 
 app = FastAPI(title="Gestor Inteligente de Gastos")
 
@@ -17,6 +18,7 @@ app.include_router(analysis_router)
 app.include_router(simulation_router)
 app.include_router(recommendation_router)
 app.include_router(metrics_router)
+app.include_router(auth_router)
 
 @app.get("/")
 def health_check():

@@ -160,8 +160,7 @@ function Dashboard() {
 
           </div>
 
-          <button onClick={handleExcelUpload} className="active"
-              style={{ marginTop: "20px" }}>
+          <button onClick={handleExcelUpload} className="primary-button" style={{ marginTop: "20px" }}>
             Enviar Excel
           </button>
           <div className="card-box" style={{ marginTop: "20px" }}>
@@ -283,7 +282,7 @@ function Dashboard() {
               />
             </div>
 
-            <button onClick={handleSimulation} className="active">
+            <button onClick={handleSimulation} className="primary-button">
               Simular escenario
             </button>
             <p style={{marginTop:"20px"}}>Gasto proyectado:</p>
@@ -313,10 +312,10 @@ function Dashboard() {
           )}
 
           <button
-            onClick={handleRecommendation}
-            className="active"
-            disabled={loadingLLM}
-          >
+  onClick={handleRecommendation}
+  className="primary-button"
+  disabled={loadingLLM}
+>
             {loadingLLM ? "Generando..." : "Generar recomendación"}
           </button>
 

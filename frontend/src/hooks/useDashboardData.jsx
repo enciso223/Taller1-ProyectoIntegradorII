@@ -11,7 +11,9 @@ function useDashboardData() {
     categorias: [],
     tendencia: [],
     categoriaPrincipal: "",
-    recomendacion: "",
+    recomendacion: [],
+    riesgo: "",
+    proyeccion: 0,
     promedioMensual: 0
     });
 
@@ -76,10 +78,13 @@ function useDashboardData() {
       }
     });
 
-
+    console.log(data.recommendations);
+    console.log(typeof data.recommendations);
     setStats(prev => ({
       ...prev,
-      recomendacion: data.recommendations
+      recomendacion: data.recommendations,
+      riesgo: data.risk_level,
+      proyeccion: data.projected_savings 
     }));
   };
   const loadLLMMetrics = async () => {

@@ -298,18 +298,21 @@ function Dashboard() {
         {/* LLM */}
 
         <section ref={llmRef} className="card-section">
+          
           <h3>Recomendaciones LLM</h3>
 
           <div className="card-boxRecommenadation">
 
           {loadingLLM ? (
             <div className="spinner-wrapper">
-            <div className="spinner"></div>
+              <div className="spinner"></div>
             </div>
           ) : (
-            <p style={{ whiteSpace: "pre-line" }}>
-              {stats.recomendacion || "Aquí aparecerán recomendaciones generadas por IA"}
-            </p>
+            <ul>
+              {(stats.recomendacion || []).map((rec, index) => (
+                <li key={index}>{rec}</li>
+              ))}
+            </ul>
           )}
 
           <button
@@ -320,8 +323,21 @@ function Dashboard() {
             {loadingLLM ? "Generando..." : "Generar recomendación"}
           </button>
 
+        
         </div>
+        <div className="stats" style={{marginTop: "20px"}}>
+        <div className="stat-card">
+            <p>Riesgo</p>
+            {loading ? "cargando..." : `- ${stats.riesgo}`}
+          </div>
+          <div className="stat-card">
+            <p>Proyección</p>
+            {loading ? "cargando..." : `$ ${stats.proyeccion?.toFixed(0)}`}
+          </div>
+          </div>
+          
         </section>
+        
 
         {/*Metricas */}
         <section ref={metricasRef} className="card-section">
@@ -330,22 +346,22 @@ function Dashboard() {
 
           <div className="stat-card">
             <p>Total requests</p>
-            <h2>{metricas.total_requests}</h2>
+            {loading ? "cargando..." : `${metricas.total_requests?.toFixed(0)}`}
           </div>
 
           <div className="stat-card">
             <p>Total tokens</p>
-            <h2>{metricas.total_tokens}</h2>
+            {loading ? "cargando..." : `${metricas.total_tokens?.toFixed(0)}`}
           </div>
 
           <div className="stat-card">
             <p>Total cost</p>
-            <h2>${metricas.total_cost_usd}</h2>
+            {loading ? "cargando..." : `$${metricas.total_cost_usd.toFixed(6)}`}
           </div>
 
           <div className="stat-card">
             <p>Avg response time</p>
-            <h2>{metricas.avg_response_time}s</h2>
+            {loading ? "cargando..." : `${metricas.avg_response_time?.toFixed(6)} s`}
           </div>
 
         </div>

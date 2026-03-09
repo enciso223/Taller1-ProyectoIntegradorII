@@ -7,9 +7,13 @@ from app.utils.financial_validator import validate_projected_savings
 from app.modules.metrics.service import log_usage
 from app.modules.recommendation.schemas import RecommendationResponse
 import time
+from app.utils.logger import get_logger
 
+logger = get_logger(__name__)
 
 def generate_recommendations(db: Session):
+
+    logger.info("Generando recomendación del LLM")
 
     # 1. Datos reales backend
     summary = calculate_summary(db)
@@ -45,6 +49,9 @@ def generate_recommendations(db: Session):
 
     # 6. Tokens
     tokens_used = response.usage_metadata.total_token_count
+
+    logger.info("Respuesta del LLM recibida")
+
     log_usage(
     db,
     tokens_used,

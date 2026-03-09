@@ -7,9 +7,13 @@ from app.modules.analysis.schemas import (
     MonthlyTrend
 )
 from collections import defaultdict
+from app.utils.logger import get_logger
 
+logger = get_logger(__name__)
 
 def calculate_summary(db: Session) -> AnalysisResponse:
+
+    logger.info("Iniciando análisis de los datos")
 
     # Total general
     total_expenses = db.query(func.sum(Expense.amount)).scalar() or 0
@@ -50,6 +54,8 @@ def calculate_summary(db: Session) -> AnalysisResponse:
     # Promedio mensual
     months_count = len(monthly_trend)
     average_monthly = float(total_expenses / months_count) if months_count > 0 else 0
+
+    logger.info("Análisis completado")
 
     return AnalysisResponse(
         total_expenses=float(total_expenses),

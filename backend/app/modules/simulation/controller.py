@@ -5,6 +5,9 @@ from app.core.database import get_db
 from app.core.dependencies import get_current_user 
 from app.modules.simulation.schemas import SimulationRequest, SimulationResponse
 from app.modules.simulation.service import run_simulation
+from app.utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 router = APIRouter(prefix="/api/simulation", tags=["Simulation"])
 

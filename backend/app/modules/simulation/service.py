@@ -5,9 +5,13 @@ from app.modules.simulation.schemas import (
     SimulationResponse,
     CategoryProjection
 )
+from app.utils.logger import get_logger
 
+logger = get_logger(__name__)
 
 def run_simulation(category: str, percentage: float, db: Session) -> SimulationResponse:
+
+    logger.info("Corriendo simulación")
 
     # Total general actual
     original_total = db.query(func.sum(Expense.amount)).scalar() or 0

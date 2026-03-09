@@ -5,6 +5,9 @@ from app.core.database import get_db
 from app.core.dependencies import get_current_user
 from app.modules.ingestion.service import process_excel
 from app.modules.ingestion.schemas import UploadResponse
+from app.utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 router = APIRouter(
     prefix="/api/ingestion",
@@ -25,4 +28,5 @@ def upload_excel(file: UploadFile = File(...), db: Session = Depends(get_db)):
             records_inserted=records
         )
     except Exception as e:
+        logger.error(f"Error del carga del Excel: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))

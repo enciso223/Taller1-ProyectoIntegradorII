@@ -20,7 +20,9 @@ function LLMCostChart({ data }) {
           dataKey="cost"
           stroke="#4f46e5"
           strokeWidth={3}
+          dot={{ r: 6 }}
         />
+        
       </LineChart>
     </ResponsiveContainer>
   );

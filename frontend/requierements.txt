@@ -1,3 +1,0 @@
-npm install react-dropzone
-npm install recharts
-npm install xlsx

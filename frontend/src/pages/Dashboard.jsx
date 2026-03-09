@@ -29,7 +29,7 @@ function Dashboard() {
   const [percentage, setPercentage] = useState("");
   const [simulationResult, setSimulationResult] = useState(null);
 
-  const { stats,metricas, loading, loadDashboard, recommendation } = useDashboardData();
+  const { stats,metricas, loading, loadDashboard, recommendation,loadLLMMetrics } = useDashboardData();
   const { runSimulation, uploadExcel } = useDashboardActions();
 
   const [loadingLLM, setLoadingLLM] = useState(false);
@@ -74,7 +74,7 @@ function Dashboard() {
       console.log(result);
 
       await loadDashboard(); //vuelve a pedir datos al backend
-
+      await loadLLMMetrics(); //actualiza métricas LLM
       alert("Excel procesado correctamente");
 
     } catch (error) {
@@ -312,10 +312,10 @@ function Dashboard() {
           )}
 
           <button
-  onClick={handleRecommendation}
-  className="primary-button"
-  disabled={loadingLLM}
->
+            onClick={handleRecommendation}
+            className="primary-button"
+            disabled={loadingLLM}
+          >
             {loadingLLM ? "Generando..." : "Generar recomendación"}
           </button>
 

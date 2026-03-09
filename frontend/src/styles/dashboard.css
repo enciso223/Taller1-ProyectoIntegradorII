@@ -183,6 +183,7 @@ body{
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+  
 }
 /* para el ciculo de carga */
 .spinner {

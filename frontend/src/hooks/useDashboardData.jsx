@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { apiFetch } from "../services/api";
 
 function useDashboardData() {
 
@@ -7,7 +8,6 @@ function useDashboardData() {
     gastos: 0,
     gastoMesActual: 0,
     simulacion: 0,
-    recomendacion: "",
     categorias: [],
     tendencia: [],
     categoriaPrincipal: "",
@@ -28,23 +28,25 @@ function useDashboardData() {
   });
 
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
 
   const loadDashboard = async () => {
+    
 
-    const res = await fetch("http://localhost:8000/api/analysis/summary", {
+    const data = await apiFetch("/analysis/summary", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       }
     });
 
-    const data = await res.json();
 
     // obtener mes actual
     const currentMonth = new Date().toISOString().slice(0,7);
 
     // buscar ese mes en monthly_trend
-    const mesActual = data.monthly_trend.find(
+    const mesActual = data?.monthly_trend?.find(
       m => m.month === currentMonth
     );
 
@@ -66,14 +68,14 @@ function useDashboardData() {
 
   const recommendation = async () => {
 
-    const res = await fetch("http://localhost:8000/api/recommendation/generate", {
+    const data = await apiFetch("/recommendation/generate", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       }
     });
 
-    const data = await res.json();
 
     setStats(prev => ({
       ...prev,
@@ -82,24 +84,27 @@ function useDashboardData() {
   };
   const loadLLMMetrics = async () => {
 
-    const res = await fetch("http://localhost:8000/api/metrics/summary");
-
-      const data = await res.json();
-
-      setMetricas(prev => ({
-        ...prev,
-        llmMetrics: {
-          total_requests: data.total_requests,
-          total_tokens: data.total_tokens,
-          total_cost_usd: data.total_cost_usd,
-          avg_tokens: data.avg_tokens,
-          avg_cost: data.avg_cost,
-          avg_response_time: data.avg_response_time,
-          error_rate: data.error_rate,
-          hallucinations_detected: data.hallucinations_detected,
-          monthly_cost_projection: data.monthly_cost_projection
+      const data = await apiFetch("/metrics/", {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
-      }));
+      });
+
+
+      console.log("Datos métricas recibidos:", data);
+
+      setMetricas({
+        total_requests: data.total_requests,
+        total_tokens: data.total_tokens,
+        total_cost_usd: data.total_cost_usd,
+        avg_tokens: data.avg_tokens,
+        avg_cost: data.avg_cost,
+        avg_response_time: data.avg_response_time,
+        error_rate: data.error_rate,
+        hallucinations_detected: data.hallucinations_detected,
+        monthly_cost_projection: data.monthly_cost_projection
+      });
+
     };
     
   useEffect(() => {
@@ -107,7 +112,7 @@ function useDashboardData() {
     loadLLMMetrics();
   }, []);
 
-  return { stats,metricas, loading, loadDashboard, recommendation };
+  return { stats,metricas, loading, loadDashboard, recommendation, loadLLMMetrics };
 }
 
 export default useDashboardData;

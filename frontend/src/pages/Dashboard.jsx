@@ -59,6 +59,7 @@ function Dashboard() {
     try {
       const result = await runSimulation(category, percentage);
       setSimulationResult(result.projected_total_expenses);
+      await loadLLMMetrics(); //actualiza métricas LLM
     } catch (error) {
       console.error(error);
     }

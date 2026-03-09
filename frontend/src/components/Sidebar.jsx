@@ -1,4 +1,4 @@
-function Sidebar({ goInformacionGastos, goAnalisis, goLLM, goSimulador, goExcel }) {
+function Sidebar({ goInformacionGastos, goAnalisis, goLLM, goSimulador, goExcel, goMetricas }) {
   return (
     <div className="sidebar">
 
@@ -21,6 +21,7 @@ function Sidebar({ goInformacionGastos, goAnalisis, goLLM, goSimulador, goExcel 
       <ul>
         <li onClick={goSimulador}>Simulación de ahorro</li>
         <li onClick={goLLM}>Recomendaciones LLM</li>
+        <li onClick={goMetricas}>Metricas</li>
         
       </ul>
 

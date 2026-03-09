@@ -9,6 +9,8 @@ import CategoryChart from "../components/CategoryChart";
 import MonthlyChart from "../components/MonthlyChart";
 //vista excel
 import * as XLSX from "xlsx";
+//grafico metricas
+import LLMCostChart from "../components/LLMCostChart";
 function Dashboard() {
 
   const informacionGastos = useRef(null);
@@ -16,6 +18,7 @@ function Dashboard() {
   const llmRef = useRef(null);
   const simuladorRef = useRef(null);
   const excelRef = useRef(null);
+  const metricasRef = useRef(null);
 
   const [active, setActive] = useState("informacionGastos");
 
@@ -26,7 +29,7 @@ function Dashboard() {
   const [percentage, setPercentage] = useState("");
   const [simulationResult, setSimulationResult] = useState(null);
 
-  const { stats, loading, loadDashboard, recommendation } = useDashboardData();
+  const { stats,metricas, loading, loadDashboard, recommendation } = useDashboardData();
   const { runSimulation, uploadExcel } = useDashboardActions();
 
   const [loadingLLM, setLoadingLLM] = useState(false);
@@ -124,6 +127,7 @@ function Dashboard() {
         goSimulador={() => scrollToSection(simuladorRef, "simulador")}
         goLLM={() => scrollToSection(llmRef, "llm")}
         goExcel={() => scrollToSection(excelRef, "excel")}
+        goMetricas={() => scrollToSection(metricasRef, "metricas")}
       />
 
       <div className="content">
@@ -316,6 +320,43 @@ function Dashboard() {
             {loadingLLM ? "Generando..." : "Generar recomendación"}
           </button>
 
+        </div>
+        </section>
+
+        {/*Metricas */}
+        <section ref={metricasRef} className="card-section">
+          <h3>Métricas </h3>
+          <div className="stats">
+
+          <div className="stat-card">
+            <p>Total requests</p>
+            <h2>{metricas.total_requests}</h2>
+          </div>
+
+          <div className="stat-card">
+            <p>Total tokens</p>
+            <h2>{metricas.total_tokens}</h2>
+          </div>
+
+          <div className="stat-card">
+            <p>Total cost</p>
+            <h2>${metricas.total_cost_usd}</h2>
+          </div>
+
+          <div className="stat-card">
+            <p>Avg response time</p>
+            <h2>{metricas.avg_response_time}s</h2>
+          </div>
+
+        </div>
+        <div>
+          <h3>Proyección de costo del LLM</h3>
+
+            <div className="chart-card">
+
+            <LLMCostChart data={metricas.monthly_cost_projection} />
+
+            </div>
         </div>
         </section>
 

@@ -18,7 +18,7 @@
 - Frontend: React + Vite
 - Base de datos: PostgreSQL
 - Contenedores: Docker + Docker Compose
-- Modelos de lenguaje: OpenAI LLM (o similar)
+- Modelos de lenguaje: Gemini
 
 ---
 
@@ -47,6 +47,12 @@ Esto iniciará tres servicios principales:
 -frontend: Aplicación React
 -db: Base de datos PostgreSQL
 
+Para ver los contenedores levantados puedes usar el comando 
+```
+docker ps
+```
+<img width="1312" height="74" alt="image" src="https://github.com/user-attachments/assets/41a5db5c-3b7c-4ec8-b497-73c0791491e4" />
+
 4. Accede a la aplicación:
 
 Frontend: http://localhost:80
@@ -70,5 +76,6 @@ API: http://localhost:8000/docs
 ├─ docker-compose.yml
 └─ README.md
 ```
+
 
 

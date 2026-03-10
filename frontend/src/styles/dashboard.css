@@ -1,0 +1,339 @@
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f4f6f8;
+}
+
+.layout{
+  display:flex;
+}
+
+/* Zona Izquierda */
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  padding: 30px 20px;
+  position: fixed;
+  border-right: 1px solid #e5e7eb;
+}
+
+/* Logo */
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* títulos de sección */
+.menu-title {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* lista */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* botones */
+.sidebar li {
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #374151;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+
+  transition: 
+    background 0.25s ease,
+    transform 0.15s ease,
+    color 0.2s ease;
+}
+
+/* hover suave */
+.sidebar li:hover {
+  background: #f3f4f6;
+  transform: translateX(4px);
+}
+
+/* botón activo */
+.sidebar li.active {
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+}
+
+/* hover cuando está activo */
+.sidebar li.active:hover {
+  background: #2563eb;
+}
+
+/* cerrar sesión */
+.sidebar li.logout {
+  color: #ef4444;
+}
+
+.sidebar li.logout:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+.content {
+  margin-left: 260px;
+  min-height: 100vh;
+  width: calc(100% - 260px);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.welcome{
+  margin-bottom:30px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+}
+
+.stat-card p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.stat-card h2 {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+
+
+
+.card-section,
+.card-sectionCargaExcel {
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 60px;
+}
+
+
+
+.chart-placeholder{
+  height:250px;
+  background:white;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+
+.card-box{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+}
+
+
+
+.upload-box{
+  height:150px;
+  border:2px dashed #bbb;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+}
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+  
+}
+/* para el ciculo de carga */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid #3b82f6;
+  border-right: 5px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.card-boxRecommenadation{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  min-height:120px;
+}
+.spinner-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:80px;
+}
+/* excel */
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.preview-table th {
+  background: #f3f4f6;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.preview-table th,
+.preview-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.preview-table tr:hover {
+  background: #f9fafb;
+}
+
+.content {
+  color: #1f2937;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+.content p,
+.content span,
+.content label,
+.content table,
+.content th,
+.content td {
+  color: #1f2937;
+}
+
+.primary-button {
+  width: 200px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.primary-button:hover {
+  background: #2563eb;
+}
+
+.primary-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px 16px;
+    align-items: stretch;
+  }
+
+  .card-section,
+  .card-sectionCargaExcel {
+    max-width: 100%;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-card,
+  .chart-card,
+  .card-box,
+  .card-boxRecommenadation {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .upload-box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .preview-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

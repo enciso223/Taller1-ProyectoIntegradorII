@@ -1,0 +1,54 @@
+# -----------------------------
+# LOGS
+# -----------------------------
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -----------------------------
+# NODE / FRONTEND
+# -----------------------------
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Vite
+.vite
+
+# -----------------------------
+# ENV VARIABLES
+# -----------------------------
+.env
+.env.*
+!.env.example
+
+# -----------------------------
+# EDITOR FILES
+# -----------------------------
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# -----------------------------
+# DOCKER
+# -----------------------------
+*.pid
+*.seed
+*.pid.lock
+
+# -----------------------------
+# OS FILES
+# -----------------------------
+Thumbs.db
+.DS_Store

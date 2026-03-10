@@ -1,6 +1,8 @@
 from sqlalchemy.orm import Session
 from app.models.metric import Metric
 from sqlalchemy import func
+#para monthly_projection
+from datetime import datetime
 
 # Precio estimado Gemini Flash (académico)
 COST_PER_1K_TOKENS = 0.00035
@@ -44,7 +46,12 @@ def get_metrics(db: Session):
         .filter(Metric.hallucination_detected == True)\
         .scalar() or 0
     avg_cost = total_cost / total_requests if total_requests else 0
-    monthly_projection = avg_cost * 1000
+    monthly_projection = [
+    {
+        "month": datetime.now().strftime("%Y-%m"),
+        "cost": avg_cost * 1000
+        }
+        ]
 
     return {
         "total_requests": total_requests,                   # Total de solicitudes hechas al LLM

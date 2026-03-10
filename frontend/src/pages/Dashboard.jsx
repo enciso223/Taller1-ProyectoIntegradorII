@@ -332,7 +332,7 @@ function Dashboard() {
           </div>
           <div className="stat-card">
             <p>Proyección</p>
-            {loading ? "cargando..." : `$ ${stats.proyeccion?.toFixed(0)}`}
+            {loading ? "cargando..." : `$ ${stats.proyeccion?.toFixed(6)}`}
           </div>
           </div>
           

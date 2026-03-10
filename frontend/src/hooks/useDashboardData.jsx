@@ -86,6 +86,8 @@ function useDashboardData() {
       riesgo: data.risk_level,
       proyeccion: data.projected_savings 
     }));
+    //actualizar métricas después de obtener recomendación
+    loadLLMMetrics();
   };
   const loadLLMMetrics = async () => {
 

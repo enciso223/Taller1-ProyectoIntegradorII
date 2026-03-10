@@ -33,8 +33,8 @@
 
 1. Clona el repositorio:
 ```
-git clone https://github.com/tu_usuario/FinSight.git
-cd FinSight
+git clone https://github.com/Juanmaperea/Taller1-ProyectoIntegradorII.git
+cd Taller1-ProyectoIntegradorII
 ```
 2. Configurar el archivo .env de acuerdo al archivo .env.example
 
@@ -43,9 +43,9 @@ cd FinSight
 docker-compose up --build
 ```
 Esto iniciará tres servicios principales:
--backend: API de FastAPI
--frontend: Aplicación React
--db: Base de datos PostgreSQL
+- backend: API de FastAPI
+- frontend: Aplicación React
+- db: Base de datos PostgreSQL
 
 Para ver los contenedores levantados puedes usar el comando 
 ```
@@ -55,8 +55,8 @@ docker ps
 
 4. Accede a la aplicación:
 
-Frontend: http://localhost:80
-API: http://localhost:8000/docs
+* Frontend: http://localhost:80
+* API: http://localhost:8000/docs
 
 ---
 
@@ -76,6 +76,9 @@ API: http://localhost:8000/docs
 ├─ docker-compose.yml
 └─ README.md
 ```
+
+
+
 
 
 

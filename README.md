@@ -33,8 +33,8 @@
 
 1. Clona el repositorio:
 ```
-git clone https://github.com/tu_usuario/FinSight.git
-cd FinSight
+git clone https://github.com/tu_usuario/Taller1-ProyectoIntegradorII.git
+cd Taller1-ProyectoIntegradorII
 ```
 2. Configurar el archivo .env de acuerdo al archivo .env.example
 
@@ -76,6 +76,7 @@ docker ps
 ├─ docker-compose.yml
 └─ README.md
 ```
+
 
 
 

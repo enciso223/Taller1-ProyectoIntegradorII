@@ -16,4 +16,5 @@ ARG GEMINI_API_KEY
 ENV DATABASE_URL=$DATABASE_URL
 ENV GEMINI_API_KEY=$GEMINI_API_KEY
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "$PORT"]
+# Elimina la versión con corchetes y usa esta:
+CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT

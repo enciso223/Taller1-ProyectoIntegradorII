@@ -7,7 +7,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./app ./app
+COPY . .
 
 ARG DATABASE_URL
 ARG GEMINI_API_KEY
@@ -16,4 +16,4 @@ ARG GEMINI_API_KEY
 ENV DATABASE_URL=$DATABASE_URL
 ENV GEMINI_API_KEY=$GEMINI_API_KEY
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "$PORT"]

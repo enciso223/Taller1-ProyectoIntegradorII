@@ -4,7 +4,7 @@ from app.core.database import get_db
 from app.modules.auth.schemas import RegisterRequest, LoginRequest, TokenResponse
 from app.modules.auth.service import register_user, login_user
 
-router = APIRouter(prefix="/api/auth", tags=["Auth"])
+router = APIRouter(prefix="/auth", tags=["Auth"])
 
 
 @router.post("/register")
